@@ -118,21 +118,21 @@ const DrawingCanvas = () => {
       const ctx = canvasRef.current.getContext('2d')
       ctx.closePath()
    }
-   useEffect(()=>{
-        const fetchData =async ()=> { 
-      const res = await axios.get("http://127.0.0.1:5000/")
-       //  console.log('the res is',res.data);
-         }
-       const data = fetchData()
+   // useEffect(()=>{
+   //      const fetchData =async ()=> { 
+   //    const res = await axios.get("/.netlify/functions/predict/")
+   //     //  console.log('the res is',res.data);
+   //       }
+   //     const data = fetchData()
       
         
-   },[])
+   // },[])
 
    const handlePredict = async()=>{
       try {
       const imageData = getCurrentCanvasImage()
        
-       const res = await axios.post("http://127.0.0.1:5000/predict",{ image : imageData})
+       const res = await axios.post("/.netlify/functions/predict",{ image : imageData})
       //const res = await axios.get("http://127.0.0.1:5000/random-predict")
       console.log('the res is',res?.data);
        setPrediction(res?.data)
