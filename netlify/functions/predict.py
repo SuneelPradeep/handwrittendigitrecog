@@ -3,6 +3,7 @@
 from PIL import Image
 from joblib import load
 import sys
+import json
 import random
 import base64
 import pickle
@@ -17,7 +18,7 @@ with open('HandWritten_Digit_Recognition', 'rb') as f:
 
 def handler(event, context):
     try:
-    data = request.get_json()
+    data = json.loads(event['body'])
     try:
         if 'image' not in data:
             return {"statusCode": 400, "body": json.dumps({"error": "No image provided or format is wrong"})}
